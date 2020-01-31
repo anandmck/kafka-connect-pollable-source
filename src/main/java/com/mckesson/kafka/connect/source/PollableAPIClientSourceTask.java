@@ -153,7 +153,7 @@ public class PollableAPIClientSourceTask extends PollableSourceTask {
           List<SourceRecord> pollResult = apiClient.poll(topic, currentPartition, currentOffset, itemsToPoll, stop);
           log.debug(">>> {} poll result: {} | (newOffset={}, topic={})", apiClient.getClass().getSimpleName(), pollResult.size(), currentOffset, topic);
           data.addAll(pollResult);
-          if (isCronConfigured()) {
+          if (isCronConfigured() && pollResult.size() < batchSize) { //update offset only is result < batchsize because it will stop polling until the next cron time  
             currentOffset.put(LAST_EXECUTED_TIME_CONFIG, Long.valueOf(System.currentTimeMillis()));
           }
 
