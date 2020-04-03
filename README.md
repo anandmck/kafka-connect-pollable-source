@@ -21,7 +21,7 @@ poll.interval = 30000
 ### Configuration options
 | Name | Description| Type| Default | Importance |Notes
 |---|---|---|---|---|---|
-|apiclient.class|Class implemented interface [PollableAPIClient](blob/master/src/main/java/com/mckesson/kafka/connect/source/PollableAPIClient.java) |class||high|
+|apiclient.class|Class implemented interface [PollableAPIClient](src/main/java/com/mckesson/kafka/connect/source/PollableAPIClient.java) |class||high|
 |topic | Kafka topic name | string | | high
 |poll.interval|Poll frequency in millis| long | 5000 | medium
 |poll.size | Target poll size. | int | 1000 | medium | api.client implementation is responsible for number of records that will be returned.
